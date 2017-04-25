@@ -1,0 +1,42 @@
+<md-progress-bar mode="indeterminate" color="primary" *ngIf="isLoadingRoute"></md-progress-bar>
+<md-toolbar [color]="navigation.mediumScreenAndDown ? 'primary' : null">
+  <button md-icon-button (click)="toggleSidenav()" id="menu-toggler" *ngIf="sidenavOpenStyle !== 'off'">
+    <md-icon>menu</md-icon>
+  </button>
+
+  <span class="breadcrumb-holder" *ngIf="navigation.largeScreen">
+    <span *ngFor="let breadcrumb of breadcrumbs" class="breadcrumb">
+      <a *ngIf="breadcrumb.link !== null" [routerLink]="breadcrumb.link" class="breadcrumb-link">{{breadcrumb.title}}</a>
+      <a *ngIf="breadcrumb.link === null" class="breadcrumb-link">{{breadcrumb.title}}</a>
+    </span>
+    <span class="breadcrumb">{{pageTitle}}</span>
+  </span>
+  <span *ngIf="navigation.mediumScreenAndDown && (breadcrumbs.length === 0 || autoBreadcrumbs) && !searchToggled">
+    {{pageTitle}}
+  </span>
+
+  <span class="app-flex-filler"></span>
+  <button md-icon-button (click)="toggleSearch(searchField)" *ngIf="search.searchEnabled | async"><md-icon>search</md-icon></button>
+  <md-input-container id="topnav-search" [ngClass]="{'search-visible': (searchToggled && (search.searchEnabled | async))}" [floatPlaceholder]="'never'">
+    <input #searchField mdInput placeholder="Search" type="text" [(ngModel)]="searchTerm" (blur)="searchBlur()">
+  </md-input-container>
+  <button md-icon-button [mdMenuTriggerFor]="menu" id="user-dropdown-toggler">
+    John Smith
+    <md-icon>keyboard_arrow_down</md-icon>
+  </button>
+  <md-menu #menu="mdMenu" x-position="before">
+    <button md-menu-item> Refresh</button>
+    <button md-menu-item> Settings</button>
+    <button md-menu-item> Help</button>
+    <button md-menu-item disabled> Sign Out</button>
+  </md-menu>
+  <md-toolbar-row *ngIf="navigation.mediumScreenAndDown && breadcrumbs.length > 0 && !autoBreadcrumbs">
+    <span class="breadcrumb-holder">
+      <span *ngFor="let breadcrumb of breadcrumbs" class="breadcrumb">
+        <a *ngIf="breadcrumb.link !== null" [routerLink]="breadcrumb.link" class="breadcrumb-link">{{breadcrumb.title}}</a>
+        <a *ngIf="breadcrumb.link === null" class="breadcrumb-link">{{breadcrumb.title}}</a>
+      </span>
+      <span class="breadcrumb">{{pageTitle}}</span>
+    </span>
+  </md-toolbar-row>
+</md-toolbar>

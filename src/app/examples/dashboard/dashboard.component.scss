@@ -1,0 +1,42 @@
+#commits {
+  height: 400px;
+  overflow-y: auto;
+  & .collection-item > p {
+    padding-right: 20px;
+  }
+  .detail-message {
+    color: rgba(0, 0, 0, 0.54);
+  }
+}
+
+#contributors .circle {
+  width: 40px;
+  height: 40px
+}
+
+#recent-commits {
+  overflow-x: hidden;
+}
+
+@import '../../../assets/scss/variables';
+#server-chart {
+  min-width: 66%;
+  @media #{$large-and-up} {
+    margin-right: 16px;
+  }
+}
+
+#contributors md-card-content {
+  overflow-x: scroll;
+}
+
+.overflow-scroll {
+  overflow-x: scroll;
+}
+
+
+@import '~@angular/material/theming';
+
+.widgets {
+  margin-bottom: 16px;
+}

@@ -1,0 +1,28 @@
+<div id="login-page" class="flex-container align-center justify-center layout-column">
+  <div class="flex-align align-start"></div>
+  <md-card class="flex-align">
+    <md-card-content>
+      <form name="loginForm" (ngSubmit)="login()" novalidate>
+        <div class="flex-container align-center justify-center layout-column">
+          <img id="login-logo" class="flex-align" src="/assets/images/logo.png">
+        </div>
+        <md-input-container dividerColor="accent">
+          <input mdInput placeholder="Username" name="username" [(ngModel)]="username" required/>
+        </md-input-container>
+        <md-input-container dividerColor="accent">
+          <input mdInput placeholder="Password" name="password" type="password" [(ngModel)]="password" required/>
+        </md-input-container>
+        <div class="forgot-password">
+          <a href="" id="forgot-password" md-anchor color="accent">Forgot Password?</a>
+        </div>
+        <button mat-raised-button color="primary" type="submit">Sign In</button>
+      </form>
+    </md-card-content>
+  </md-card>
+  <md-card class="flex-align">
+    <md-card-content>
+      Don't have an account? <span class="right-align"><a routerLink="/examples/authentication/register">Sign Up</a></span>
+    </md-card-content>
+  </md-card>
+  <div class="flex-align align-end"></div>
+</div>
